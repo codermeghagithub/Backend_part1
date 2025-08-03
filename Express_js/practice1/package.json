@@ -1,0 +1,16 @@
+{
+  "name": "practice1",
+  "version": "1.0.0",
+  "main": "put.js",
+  "scripts": {
+    "dev":"nodemon put.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type":"module",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

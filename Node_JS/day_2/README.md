@@ -171,3 +171,4 @@ const promise = new Promise((resolve, reject) => {
 In Node.js, the event loop has different phases (like timers, I/O callbacks, etc.).
 
 Promises (specifically .then(), .catch(), .finally()) are handled in the microtask queue — a special fast queue that runs after the current operation and before the next event loop phase.
+
