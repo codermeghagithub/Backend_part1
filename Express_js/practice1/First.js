@@ -74,6 +74,18 @@ app.listen(8080,()=>{
 // PUT 
 
 // PATCH
+app.patch("/create-user",(req,res)=>{
+  const{name,email}=req.body;
+  data.push({id:data.length+1,
+    name,
+    email
+  })
+  res.status(201).json({
+    success:true,
+    message:"user created successfuly",
+    data
+  })
+})
 
 
 // DELETE
