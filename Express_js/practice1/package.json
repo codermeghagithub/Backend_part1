@@ -1,9 +1,9 @@
 {
   "name": "practice1",
   "version": "1.0.0",
-  "main": "put.js",
+  "main": "First.js",
   "scripts": {
-    "dev":"nodemon put.js"
+    "dev":"nodemon First.js"
   },
   "keywords": [],
   "author": "",
