@@ -153,6 +153,10 @@ db.myCollection.find({ "name": "John" });
 ## **The `find` Keyword**
 The `find` method is used to query MongoDB collections. It returns a cursor, which can be iterated over.
 
+## show full collection 
+```
+ db.food.find()
+ ```
 ### **Basic Find**
 ```javascript
 db.myCollection.find({ "name": "John" });
