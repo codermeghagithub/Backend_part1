@@ -151,6 +151,12 @@ When you use the `find()` method in MongoDB, it returns a **cursor**, which is a
 #### **1. `count()`**
 The `count()` method returns the number of documents matching the query criteria.
 
+```
+newProducts> db.food.find({price:{$eq:18.32}}).count()
+```
+output=>
+1
+
 ```javascript
 // Count the number of documents of type "fruit"
 const count = db.collectionName.find({ type: "fruit" }).count();
