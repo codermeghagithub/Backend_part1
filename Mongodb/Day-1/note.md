@@ -1,3 +1,9 @@
+## What is MongoDB?
+MongoDB is an open-source document-oriented database that is designed to store a large scale of data and allows us to work with that data efficiently. It is categorized under the NoSQL database because the storage and retrieval of data in the MongoDB are not in the form of tables.
+
+
+
+
 ### Title : Advanced Queries in MongoDB
 
 ### ✅ `$exists` Operator Example
