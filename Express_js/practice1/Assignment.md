@@ -32,7 +32,7 @@ It can handle a large number of concurrent connections due to Node.js's event-dr
 
 
 ##  explain patch method 
-```
+```js
 app.patch("/get-user/:id", (req, res) => {
   const id = parseInt(req.params.id); // Get user ID from URL
   const updates = req.body;           // Get the fields to update from request body

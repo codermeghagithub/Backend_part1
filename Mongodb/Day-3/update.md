@@ -52,6 +52,29 @@ db.comments.replaceOne(
 - **Explanation**: This replaces the document for `"user2"` with the new one provided.
 
 ---
+## Update Operators and Their Use
+
+Here’s a quick recap of MongoDB update operators for reference:
+
+
+$set: Sets or updates a field’s value (creates the field if it doesn’t exist).
+
+
+
+$inc: Increments a numeric field by a specified value.
+
+
+
+$push: Adds an item to an array field.
+
+
+
+$pull: Removes a specific item from an array field.
+
+
+
+$unset: Deletes a field from the document. 
+
 
 ### **3. Update Operators**  
 MongoDB uses **update operators** to modify documents. Some common ones are:  
@@ -70,38 +93,34 @@ MongoDB uses **update operators** to modify documents. Some common ones are:
 
 #### **Updating a Specific Field**
 ```javascript
-db.comments.updateOne(
-  { user: "user3" },
-  { $set: { text: "Updated again!", edited: true } }
-);
+
 ```
 - **Explanation**: Updates the `text` field and adds a new field `edited`.
 
 #### **Incrementing a Value**
 ```javascript
-db.comments.updateOne(
-  { user: "user3" },
-  { $inc: { likes: 5 } }
+db.articles.updateOne(
+  { title: "Mastering Git: Essential Commands" },
+  { $inc: { "metadata.likes": 15 } }
 );
+// Update: Uses $inc to increase likes from 96 to 111.
 ```
 - **Explanation**: Increases the `likes` field by `5`.
 
 #### **Adding to an Array**
 ```javascript
-db.comments.updateOne(
-  { user: "user4" },
-  { $push: { tags: "favorite" } }
-);
+ db.comments.updateOne({ "comments.user": "user1" },{ $push: { "comments.$.tags": "favorite" }});
 ```
 - **Explanation**: Adds `"favorite"` to the `tags` array.
 
 #### **Removing from an Array**
 ```javascript
-db.comments.updateOne(
-  { user: "user4" },
-  { $pull: { tags: "spam" } }
+db.articles.updateMany(
+  { "metadata.views": { $gt: 2500 } },
+  { $pull: { comments: { text: { $regex: "Can", $options: "i" } } } }
 );
 ```
+**Update: Uses $pull to remove comments where the text field contains "Can" (case-insensitive).**
 - **Explanation**: Removes `"spam"` from the `tags` array.
 
 #### **Removing a Field**
@@ -147,3 +166,35 @@ db.comments.updateMany(
 | **`updateOne`**  | 1 doc   | Optional                    | Updates the first match only|
 | **`updateMany`** | Many    | Optional                    | Updates all matches         |
 | **`replaceOne`** | 1 doc   | Optional                    | Replaces entire document    |
+
+
+
+### implement $unset operator
+```js
+{
+    _id: ObjectId('689828debd0dd3eb7d3b2ea7'),
+    title: 'Understanding JavaScript Closures',
+    content: 'Closures are a fundamental concept in JavaScript...',
+    author: 'John Doe',
+    comments: [
+      {
+        user: 'user1',
+        text: 'Great explanation!',
+        tags: [ 'favorite' ]
+      },
+      { user: 'user2', text: 'Really helpful, thanks!' }
+    ],
+    metadata: { likes: 60, views: 1200, like: 15 }
+  }
+```
+### Delete the like field (with value 15) from the metadata
+
+```js
+db.articles.updateOne(
+  { _id: ObjectId('689828debd0dd3eb7d3b2ea7') }, // Filter: Match the document by _id
+  { $unset: { "metadata.like": "" } } // Remove the like field from metadata
+);
+```
+
+
+## Delete query

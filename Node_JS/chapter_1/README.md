@@ -34,3 +34,23 @@ A file is updated
 A new file is added to a folder
 
 A file is deleted
+
+## "Method, endpoint, data, request, and response all together make an API call/request."
+
+### Here's the difference:
+```js
+One API Call:
+Method: GET
+Endpoint: https://api.weather.com/current
+Data: {"city": "London"}
+Request: Asking for weather
+Response: {"temperature": 20, "condition": "sunny"}
+```
+### An API (the whole system):
+* Multiple endpoints
+* Documentation
+* Authentication system
+* Error handling
+* Rate limiting
+* Many possible API calls
+
