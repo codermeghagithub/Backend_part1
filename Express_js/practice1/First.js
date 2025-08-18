@@ -25,7 +25,7 @@ app.get("/get-users",(req,res)=>{
 res.status(200).json(data);
 })
 app.get("/get-user/:id",(req,res)=>{
-  const{id}=req.params;//.params is a property of the req object.
+  const{id}=req.params//.params is a property of the req object.
   const user=data.find((user)=>user.id===Number(id));
   res.status(200).json(user);
 })
@@ -69,11 +69,6 @@ app.listen(8080,()=>{
 )
 
 // POST
-
-
 // PUT 
-
 // PATCH
-
-
 // DELETE
