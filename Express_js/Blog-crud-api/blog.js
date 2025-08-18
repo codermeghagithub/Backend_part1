@@ -24,7 +24,7 @@ let posts = [
     updatedAt: new Date().toISOString(),
   },
 ];
-
+// **get method
 app.get("/api/blog", (req, res) => {
   try {
     res.status(200).json(posts); //** or=> res.json(posts);  it will give same o/p */
@@ -70,13 +70,11 @@ app.post("/api/post-no", (req, res) => {
     }
     posts.push({ id: posts.length + 1, title, author });
 
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "successfully push one user's data",
-        posts,
-      });
+    res.status(200).json({
+      success: true,
+      message: "successfully push one user's data",
+      posts,
+    });
   } catch (err) {
     console.error("Error while creating post:", err.message);
     res.status(500).json({
@@ -84,6 +82,108 @@ app.post("/api/post-no", (req, res) => {
       message: "Internal Server Error",
     });
   }
+});
+
+// **put
+
+// ✅ PUT route with try-catch error handling
+app.put("/api/posts/:id", (req, res) => {
+  try {
+    const id = parseInt(req.params.id); // **convert id to number
+    const { title, content, author } = req.body;
+
+    // ** find the post by id
+    const post = posts.find((p) => p.id === id);
+
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        message: "Post not found",
+      });
+    }
+
+    // update the post
+    post.title = title || post.title;
+    post.content = content || post.content;
+    post.author = author || post.author;
+    post.updatedAt = new Date().toISOString();
+
+    res.status(200).json({
+      success: true,
+      message: "Post updated successfully",
+      post,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong while updating post",
+      error: error.message,
+    });
+  }
+});
+
+// **PATCH
+
+app.patch("/api/patch/:id", (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const { title,content,author } = req.body;
+    const post = posts.find((p) => p.id === id);
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        message: "Post not found",
+      });
+    }
+    if (title !== undefined) post.title = title;
+    if (content !== undefined) post.content = content;
+    if (author !== undefined) post.author = author;
+
+    post.updatedAt = new Date().toISOString();
+    res.status(200).json({
+      success: true,
+      message: "Post updated partially (PATCH) successfully",
+      post,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong while patching post",
+      error: err.message,
+    });
+  }
+});
+
+
+// ** DELETE
+
+app.delete("/api/delete-u/:id",(req,res)=>{
+  try{
+  const id =parseInt(req.params.id);
+// ** find the index of the post
+
+  const postIndex=posts.findIndex(u=>u.id==id);
+
+  if(postIndex===-1){
+  return res.status(404).json(
+    {success:false,
+      message:"user not found "
+    })
+  }
+const delete_user=posts.splice(postIndex,1);
+res.status(200).json({
+      success: true,
+      message: "Post deleted successfully",
+      post:delete_user[0]
+    }); 
+   }catch(err){
+res.status(500).json({
+  success:false,
+  message: "Something went wrong while deleting post",
+  error: err.message,
+
+});
+    }
 });
 
 app.listen(8000, () => {
