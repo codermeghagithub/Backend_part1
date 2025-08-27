@@ -54,3 +54,38 @@ Response: {"temperature": 20, "condition": "sunny"}
 * Rate limiting
 * Many possible API calls
 
+## ✅ JSON.stringify() — When to use
+
+You use JSON.stringify() when you want to convert a JavaScript object into a JSON string, typically for:
+**Eample :**
+```js
+const user = {
+  name: "John",
+  age: 25
+};
+
+// Send this in POST body
+fetch("/api/users", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(user)
+});
+
+```
+
+## ✅ JSON.parse(): To convert a JSON string into a JavaScript object, you use JSON.parse()
+
+This is the reverse of JSON.stringify().
+
+```js
+const jsonStr = '{"name": "Alice", "age": 30}';
+
+const obj = JSON.parse(jsonStr);
+
+console.log(obj.name); // Output: Alice
+console.log(obj.age);  // Output: 30
+
+
+```
