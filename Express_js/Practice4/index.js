@@ -20,10 +20,24 @@ app.get("/",(req,res)=>{
   console.log(req.session);
   console.log(req.session.id);
   
-  res.send("Hello mini project: task maneger")
+  res.send("Hello Everyone ")
 });
 
 
+app.get("/login",(req,res)=>{
+  req.session.user={
+    name:"Megha",
+    email:"meghaeso@gmail.com",
+    age:21
+
+  };
+  res.json(`login successfull ${(req.session.user.name)}`)
+})
+
+app.get('/logout',(req,res)=>{
+  req.session.destroy();
+  res.send("logout successfully");
+})
 
 app.listen(8000,()=>{
   console.log("Server running on port no:8000");

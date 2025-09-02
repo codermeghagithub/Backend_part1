@@ -279,3 +279,7 @@ app.get('/logout', (req, res) => {
 
 app.listen(3000, () => console.log('Server running on port 3000'));
 ```
+
+
+### A cross-site request forgery (CSRF) :
+This attack is a type of cyber attack that tricks a user into executing unwanted actions on a web application where they are authenticated.

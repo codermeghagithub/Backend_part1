@@ -104,3 +104,68 @@ app.listen(8000, () => {
 });
 
 // document.cookie="name=Megha; expires=Fri,31 Dec 9999 23:59:59 GMT";  //** research about it */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// **4XX state
+// ...existing code...
+
+// 400 Bad Request
+// app.get("/bad-request", (req, res) => {
+//   res.status(400).send("400 Bad Request");
+// });
+
+// // 401 Unauthorized
+// app.get("/unauthorized", (req, res) => {
+//   res.status(401).send("401 Unauthorized");
+// });
+
+// // 403 Forbidden
+// app.get("/forbidden", (req, res) => {
+//   res.status(403).send("403 Forbidden");
+// });
+
+// // ...existing code...
+
+
+// // Example: Trigger 400 error by throwing an error
+// app.get("/trigger-400", (req, res, next) => {
+//   const err = new Error("Bad Request Example");
+//   err.status = 400;
+//   next(err);
+// });
+
+// **Example: Trigger 401 error by calling next with error
+// app.get("/trigger-401", (req, res, next) => {
+//   const err = new Error("Unauthorized Example");
+//   err.status = 401;
+//   next(err);
+// });
+
+// // Example: Trigger 403 error by calling next with error
+// app.get("/trigger-403", (req, res, next) => {
+//   const err = new Error("Forbidden Example");
+//   err.status = 403;
+//   next(err);
+// });
+
+// // Custom error handler middleware
+// app.use((err, req, res, next) => {
+//   res.status(err.status || 500).send(err.message || "Internal Server Error");
+// });
+
+// // ...existing code...
