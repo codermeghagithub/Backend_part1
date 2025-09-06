@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "put.js",
   "scripts": {
-    "dev":"nodemon put.js"
+    "dev":"nodemon index.js"
   },
   "keywords": [],
   "author": "",

@@ -21,35 +21,35 @@ email:"meg123@gmail.com"
 },
 ];
 //routes parameter 
-app.get("/get-users",(req,res)=>{
-res.status(200).json(data);
-})
-app.get("/get-user/:id",(req,res)=>{
-  const{id}=req.params//.params is a property of the req object.
-  const user=data.find((user)=>user.id===Number(id));
-  res.status(200).json(user);
-})
+// app.get("/get-users",(req,res)=>{
+// res.status(200).json(data);
+// })
+// app.get("/get-user/:id",(req,res)=>{
+//   const{id}=req.params//.params is a property of the req object.
+//   const user=data.find((user)=>user.id===Number(id));
+//   res.status(200).json(user);
+// })
 
-// Query parameters 
-app.get("/get-user", (req,res)=>{
-const{name,age}=req.query;
-res.status(200).json({ name, age });
-})
+// // Query parameters 
+// app.get("/get-user", (req,res)=>{
+// const{name,age}=req.query;
+// res.status(200).json({ name, age });
+// })
 
 
-// post
-app.post("/create-user",(req,res)=>{
-  const{name,email}=req.body;
-  data.push({id:data.length+1,
-    name,
-    email
-  })
-  res.status(201).json({
-    success:true,
-    message:"user created successfuly",
-    data
-  })
-})
+// **post
+// app.post("/create-user",(req,res)=>{
+//   const{name,email}=req.body;
+//   data.push({id:data.length+1,
+//     name,
+//     email
+//   })
+//   res.status(201).json({
+//     success:true,
+//     message:"user created successfuly",
+//     data
+//   })
+// })
 
 // put
 

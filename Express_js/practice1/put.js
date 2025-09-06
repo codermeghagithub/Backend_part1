@@ -53,23 +53,23 @@
 
 
 // **put
-app.put("/get-user/:id",(req,res)=>{
-  const id=req.params.id
-  app.post("/get-user",(req,res)=>{
-  const{name,email}=req.body;
-  data.push({id:data.length+1,
-    name,
-    email
-  })
-  res.status(201).json({
-    success:true,
-    message:"user created successfuly",
-    data
-  })
-})
-  console.log(id)
-  res.json(id)
-})
+// app.put("/get-user/:id",(req,res)=>{
+//   const id=req.params.id
+//   app.post("/get-user",(req,res)=>{
+//   const{name,email}=req.body;
+//   data.push({id:data.length+1,
+//     name,
+//     email
+//   })
+//   res.status(201).json({
+//     success:true,
+//     message:"user created successfuly",
+//     data
+//   })
+// })
+//   console.log(id)
+//   res.json(id)
+// })
 
 
 // // how to define a simple route 
